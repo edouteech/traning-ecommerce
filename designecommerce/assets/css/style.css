@@ -166,4 +166,13 @@ input[type=text] {
     text-align: center;
   }
 
+/* Payement */
+.payement-title {
+    margin-top: 50px;
+    margin-left: 80px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
