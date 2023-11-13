@@ -133,8 +133,37 @@ sup {
     margin-bottom: 50px;
 }
 .reseau {
-    display: flex;
+    background-color: blue;
+    border: none;
+    border-radius: 90%;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+}
+.desc {
+    font-size: 20px;
+    text-align: justify;
+    width: 400px;
 }
 
+input[type=text] {
+    border : none;
+    border-bottom: 1px solid black;
+    width: 250px;
+    margin-top: 10px;
+  }
+  input::placeholder {
+    color: rgb(86, 84, 84);
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    
+ }
+ .grid-item {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
 
 
