@@ -5,6 +5,10 @@
 /* Navbar style */
 ul {
     list-style: none;
+    
+    
+}
+.navpart {
     display: flex;
 }
 .rigth_text {
@@ -84,4 +88,53 @@ sup {
     margin-right: 150px;
     margin-top: 40px;
 }
+
+/* Début des produits*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin-bottom: 50px;
+}  
+/* Fin des produits*/
+
+.presentation_week img {
+    float: left;
+    margin-right: 50px;
+}
+.presentation_week h3 {
+   font-size: 40px;
+}
+.presentation_selling img {
+    float: right;
+}
+.details_selling {
+    margin-left: 80px;
+}
+.presentation_selling h3 {
+    font-size: 40px;
+ }
+ .titre {
+    text-align: center;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+
+ }
+ .paragraph {
+    text-align: center;
+    font-size: 20px;
+    
+ }
+ .grid_start {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.reseau {
+    display: flex;
+}
+
+
 
