@@ -54,5 +54,180 @@
 margin-left:auto;
 padding:auto;
 
+    margin: auto;
+    padding: auto;
+}
+/* Navbar style */
+ul {
+    list-style: none;
+    
+    
+}
+.navpart {
+    display: flex;
+}
+.rigth_text {
+    text-align: right;
+    margin: 10px  20px;
+    margin-right: 80px;
+}
+.rigth_text span {
+    margin-left: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    color: gray;
+}
+hr {
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+.search  {
+    font-size: 20px;
+    color: rgb(30, 18, 18);
+    margin-right: 50px;
+    margin-left: 40px;
+    display: block;
+    margin-top: 10px;
+    position: relative;
+}
+li {
+    font-size: 20px;
+    color: rgb(37, 36, 36);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.nav span{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+sup {
+    color: red;
+    font-weight: bold;
+}
+
+/* Navbar style Fin*/
+
+/* Header style */
+.presentation {
+    display: flex;
+    margin-left: 100px;
+}
+.part_text {
+    width: 600px;
+}
+.part_text h3 {
+    color: blue;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+.part_text p {
+    text-align: justify;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(143, 152, 160);
+}
+.part_text button {
+    background-color: rgb(216, 72, 72);
+    border: none;
+    width: 180px;
+    height: 40px;
+    color: wheat;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 80px;
+
+}
+.presentation img {
+    margin-right: 150px;
+    margin-top: 40px;
+}
+
+/* Début des produits*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin-bottom: 50px;
+}  
+/* Fin des produits*/
+
+.presentation_week img {
+    float: left;
+    margin-right: 50px;
+}
+.presentation_week h3 {
+   font-size: 40px;
+}
+.presentation_selling img {
+    float: right;
+}
+.details_selling {
+    margin-left: 80px;
+}
+.presentation_selling h3 {
+    font-size: 40px;
+ }
+ .titre {
+    text-align: center;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+
+ }
+ .paragraph {
+    text-align: center;
+    font-size: 20px;
+    
+ }
+ .grid_start {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.reseau {
+    background-color: blue;
+    border: none;
+    border-radius: 90%;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+}
+.desc {
+    font-size: 20px;
+    text-align: justify;
+    width: 400px;
+}
+
+input[type=text] {
+    border : none;
+    border-bottom: 1px solid black;
+    width: 250px;
+    margin-top: 10px;
+  }
+  input::placeholder {
+    color: rgb(86, 84, 84);
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    
+ }
+ .grid-item {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+/* Payement */
+.payement-title {
+    margin-top: 50px;
+    margin-left: 80px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
