@@ -354,3 +354,43 @@ margin-top: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
+
+
+.modal {
+    background-color: #140909e5;
+    opacity: 0.;
+    color: white;
+}
+
+.modal-part {
+    background-color: aliceblue;
+    width: 600px;
+    color: #000;
+}
+
+.title-modal h2{
+    text-align: center;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 25px;
+}
+
+.modal-info {
+    text-align: center;
+    margin-top: 10px;
+    padding: 40px;
+    width: fit-content;
+    font-size: 25px;
+}
+.modal-button {
+    text-align: center;
+}
+.modal-button button {
+    border: none;
+    background-color: blue;
+    padding: 15px;
+    width: 250px;
+    color: aliceblue;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
