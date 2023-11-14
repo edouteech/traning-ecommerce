@@ -43,6 +43,8 @@
 .categories-liste li {
     border-bottom: 1px solid rgb(206, 205, 205);
     padding: 10px;
+    display:flex;
+    justify-content: space-between;
 }
 .second-container ul {
     list-style-type: none;
@@ -69,7 +71,7 @@ ul.tags-part {
     padding: 25px;
     background-color: rgb(245, 234, 255);
     color:black;
-    border: 1px solid white;
+    border: 1px solid white;    </span>
 }
 
 .tags-immun {
