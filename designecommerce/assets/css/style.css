@@ -148,7 +148,7 @@ sup {
     width: 400px;
 }
 
-input[type=text] {
+.item_grid input[type=text] {
     border : none;
     border-bottom: 1px solid black;
     width: 250px;
@@ -168,11 +168,229 @@ input[type=text] {
 
 /* Payement */
 .payement-title {
-    margin-top: 50px;
     margin-left: 80px;
+    margin-bottom: 50px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.payement {
+    margin-top: 50px;
+}
 
+.payement-method {
+    margin-left: 80px;
+    border: 1px solid rgb(207, 200, 200);
+    padding: 20px;
+}
+
+.payement-method label {
+    margin-right: 300px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+input[type="radio"] {
+    border: 1px solid #000;
+}
+.form-payment {
+    margin-left: 80px;
+    margin-top: 30px;
+
+}
+.form-payment h3 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.adress input[type=text] {
+    width: 800px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid rgb(189, 184, 184);
+}
+.detais input[type=text] {
+    margin-left: 70px;
+    width: 352px;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid rgb(189, 184, 184);
+
+}
+
+.go-back {
+    background-color: rgb(240, 230, 230);
+    padding: 20px;
+}
+
+.button-pay button {
+    background-color: brown;
+    border: none;
+    width: 200px;
+    height: 50px;
+    color: aliceblue;
+    font-size: 30px;
+    padding: 10px;
+    
+}
+.grid_start_payment {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto    ;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+/*  Product add to cart*/
+
+.sucessful {
+background-color: rgb(41, 118, 82);
+margin-top: 10px;
+}
+.sucessful p {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.end_start {
+    float: right;
+    margin-right: 30px;
+}
+
+.sous-menu {
+    margin-left: 150px;
+}
+
+.sous-menu span {
+    margin-right: 10px;
+    font-size: 15px;
+    color: rgb(146, 146, 128);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.product-add {
+    margin-top: 30px;
+}
+
+.btn {
+    margin-bottom: 30px;
+}
+
+.ote {
+    margin-right: 100px;
+    margin-left: 200px;
+}
+
+.full-img {
+    background-color: rgb(219, 219, 197);
+    padding: 20px;
+}
+
+.info {
+    margin-top :10px;
+    margin-left: 30px;
+}
+.title-info {
+    margin-bottom: 30px;
+}
+.price {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.tpe {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.tpe span {
+    border: 1px solid gray;
+    padding: 10px;
+    width: 50px;
+    margin-bottom: 100px;
+    font-family: 'Times New Roman', Times, serif;
+}
+ .button-add  button{
+    border: none;
+    color: aliceblue;
+    background-color: blue;
+    width: 680px;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: 20px;
+
+ }
+ .button-add {
+    margin-bottom: 30px;
+ }
+
+ .describe p {
+    font-size: 18px;
+ }
+ .describe {
+    margin-bottom: 20px;
+ }
+ .detailproduct p {
+    border: 1px solid gray;
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+
+ }
+
+ .tec {
+    float: right;
+ }
+.title-section h1 {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+
+.modal {
+    background-color: #140909e5;
+    opacity: 0.;
+    color: white;
+}
+
+.modal-part {
+    background-color: aliceblue;
+    width: 600px;
+    color: #000;
+}
+
+.title-modal h2{
+    text-align: center;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 25px;
+}
+
+.modal-info {
+    text-align: center;
+    margin-top: 10px;
+    padding: 40px;
+    width: fit-content;
+    font-size: 25px;
+}
+.modal-button {
+    text-align: center;
+}
+.modal-button button {
+    border: none;
+    background-color: blue;
+    padding: 15px;
+    width: 250px;
+    color: aliceblue;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
