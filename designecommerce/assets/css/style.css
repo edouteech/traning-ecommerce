@@ -245,6 +245,111 @@ input[type="radio"] {
     margin-bottom: 50px;
 }
 
+/*  Product add to cart*/
 
+.sucessful {
+background-color: rgb(41, 118, 82);
+margin-top: 10px;
+}
+.sucessful p {
+    color: aliceblue;
+    text-align: center;
+    padding: 10px;
+}
+.end_start {
+    float: right;
+    margin-right: 30px;
+}
 
+.sous-menu {
+    margin-left: 150px;
+}
 
+.sous-menu span {
+    margin-right: 10px;
+    font-size: 15px;
+    color: rgb(146, 146, 128);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.product-add {
+    margin-top: 30px;
+}
+
+.btn {
+    margin-bottom: 30px;
+}
+
+.ote {
+    margin-right: 100px;
+    margin-left: 200px;
+}
+
+.full-img {
+    background-color: rgb(219, 219, 197);
+    padding: 20px;
+}
+
+.info {
+    margin-top :10px;
+    margin-left: 30px;
+}
+.title-info {
+    margin-bottom: 30px;
+}
+.price {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.tpe {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.tpe span {
+    border: 1px solid gray;
+    padding: 10px;
+    width: 50px;
+    margin-bottom: 100px;
+    font-family: 'Times New Roman', Times, serif;
+}
+ .button-add  button{
+    border: none;
+    color: aliceblue;
+    background-color: blue;
+    width: 680px;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: 20px;
+
+ }
+ .button-add {
+    margin-bottom: 30px;
+ }
+
+ .describe p {
+    font-size: 18px;
+ }
+ .describe {
+    margin-bottom: 20px;
+ }
+ .detailproduct p {
+    border: 1px solid gray;
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+
+ }
+
+ .tec {
+    float: right;
+ }
+.title-section h1 {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
