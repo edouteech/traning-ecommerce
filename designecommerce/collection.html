@@ -7,12 +7,44 @@
     <title>Collection</title>
 </head>
 <body>
+        <!--Debut Navbar-->
+        <nav>
+            <div class="rigth_text">
+               <span>Return</span> 
+               <span>Help</span> 
+               <span>Register/Sign</span> 
+            </div>
+            <hr id="trait">
+            <div class="navbar">
+                   
+                <div class="navlink">
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <ul class="navpart">
+                      
+                        <li class="nav" style="margin-left: 400px;">SHOP</li>
+                        <li class="nav">ESSENTIALS</li>
+                        <li class="nav" style="font-family: Brush Script MT, Brush Script Std, cursive	;"> <span style="color: red;"> &nbsp; &nbsp;Macc &nbsp; &nbsp;</span> <br><span style="color: blue;">Essentials</span></li>
+                        <li class="nav">BEST SELLERS</li>
+                        <li class="nav">ABOUT US</li>
+                        <li class="nav">
+                                <span class="user"><i class="fa-solid fa-user"></i></span>
+                                <span class="bell"><i class="fa-regular fa-bell"></i><sup>&#9864</sup></span>
+                                <span<i class="fa-solid fa-clipboard"></i></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    <!--Fin Navbar-->
+    <!--Debut Collection-->
     <div>
         <img src="assets/img/Header.png" alt="header picture">
     </div>
     <main>
         <div class="container">
-            <div class="second-container">
+            <div class="first-container">
                 <div class="sidebar-categories">
                     <ul class="categories-liste">
                         <li class="liste-categories">
@@ -26,47 +58,50 @@
                         </li>
                     </ul>
                 </div>
-                <div class="sous-container">
+                <div class="second-container">
                         <ul class="tags-part">
                             <li class="tags-list">
                                 Everyday Essentiels
                             </li>
-                            <li>
+                            <li class="tags-clean">
                                 Cleaning Essentiels
                             </li>
-                            <li>
+                            <li class="tags-immun">
                                 Immunity Health
                             </li>
-                            <li>
+                            <li class="tags-vita">
                                 Vitamin Supplement
                             </li>
                         </ul>
-                        <div>
-                            40 Products
+                        <div class="tags-end">
+                            <p class="para-first">40 Products</p>
+                            <p class="para-second">Sort</p>
                         </div>
-                        <div>
+                        <!-- <div>
                             Sort
+                        </div> -->
+                        <div class="product-image">
+                            <div>
+                                <img src="assets/img/Content.png" alt="content picture">
+                                <p><strike>500</strike> 400</p>
+                            </div>
+                            <div>
+                                <img src="assets/img/Content (1).png" alt="Vitamine picture">
+                            </div>
+                            <div>
+                                <img src="assets/img/Content (2).png" alt="gans picture">
+                            </div>
+                            <div>
+                                <img src="assets/img/Product Item 001.png" alt=" parfun picture">
+                            </div>
+                            <div>
+                                <img src="assets/img/Product Item.png" alt="masque picture">
+                            </div>
+                            <div>
+                                <img src="assets/img/Product Item 002.png" alt="deodorant picture">
+                            </div>
+
                         </div>
-                        <div>
-                            <img src="assets/img/Content.png" alt="content picture">
-                            <p><strike>500</strike> 400</p>
-                        </div>
-                        <div>
-                            <img src="assets/img/Content (1).png" alt="Vitamine picture">
-                        </div>
-                        <div>
-                            <img src="assets/img/Content (2).png" alt="gans picture">
-                        </div>
-                        <div>
-                            <img src="assets/img/Product Item 001.png" alt=" parfun picture">
-                        </div>
-                        <div>
-                            <img src="assets/img/Product Item.png" alt="masque picture">
-                        </div>
-                        <div>
-                            <img src="assets/img/Product Item 002.png" alt="deodorant picture">
-                        </div>
-            
                         <div class="pagination">
                             <a href="#">&laquo;</a>
                             <a href="#">1</a>
@@ -81,5 +116,54 @@
             </div>
         </div>
     </main>
+    <!--Fin Collection-->
+    <footer>
+        <div class="grid_start">
+            <div class="item_grid">
+                 <h1 class="nav" style="font-family: Brush Script MT, Brush Script Std, cursive;"> <span style="color: red;">Macc</span><br><span style="color: blue;">Essentials</span></h1>
+            </div>
+            <div class="item_grid">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <ul>
+                            <li>Home</li>
+                            <br>
+                            <li>Collection</li>
+                            <br>
+                            <li>Products</li>
+                            <br>
+                        </ul>
+                </div>
+                    <div class="grid-item">
+                        <ul>
+                            <li>About</li>
+                            <br>
+                            <li>Contact</li>
+                            <br>
+                            <li>FAQ</li>
+                            <br>
+                        </ul>
+                    </div>
+            
+                 </div>
+            </div>
+            <br><br>
+            <div class="item_grid">
+               <p class="desc">Be the first to know about our biggest and best sales. We'll never send more than one email a month.</p>
+               <br>
+               <input type="text" placeholder="ENTER YOUR EMAIL "><span style="font-size: 20px;"><i class="fa-regular fa-message"></i></span>
+               <p>
+                <button class="reseau"><i class="fa-brands fa-x-twitter"></i></button>
+                
+                <button class="reseau"><i class="fa-brands fa-linkedin"></i></button>
+                
+                <button class="reseau"><i class="fa-brands fa-facebook"></i></button>
+                
+                <button class="reseau"><i class="fa-brands fa-instagram"></i></button>
+            </p>
+            </div>
+        </div>
+        <p style="text-align: center; margin: 40px; font-size: 19px;">All rights are reserved</p>
+    </footer>
 </body>
 </html>

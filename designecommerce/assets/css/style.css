@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+/*Debut de Collection*/
 .pagination {
     display: inline-block;
    
@@ -22,7 +22,7 @@
     display: flex; 
 }
 
-.second-container {
+.first-container {
     display: flex;
     text-align: center;
 
@@ -40,22 +40,72 @@
     
 }
 
-
-.sous-container ul {
+.categories-liste li {
+    border-bottom: 1px solid rgb(206, 205, 205);
+    padding: 10px;
+}
+.second-container ul {
     list-style-type: none;
-
-    
-    
   
 }
+.second-container {
+    padding: 30px;
+}
 
-.sous-container ul li {
+ul.tags-part {
+    gap: 20px;
+}
+.tags-part {
+    display: flex;
+}
 
+.tags-list {
+    padding: 25px;
+    background-color: blueviolet;
+    color:white;
+    border: 1px solid white;
+}
+.tags-clean {
+    padding: 25px;
+    background-color: rgb(245, 234, 255);
+    color:black;
+    border: 1px solid white;
+}
+
+.tags-immun {
+    padding: 25px;
+    background-color: rgb(245, 234, 255);
+    color:black;
+    border: 1px solid white;
+}
+
+.tags-vita {
+    padding: 25px;
+    background-color:rgb(245, 234, 255);
+    color:black;
+    border: 1px solid white;
+
+}
+
+.tags-end {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+p.para-second {
+    border: 1px solid;
+    padding: 20px 90px;
+}
+.second-container ul li {
 margin-left:auto;
 padding:auto;
+margin: auto;
+padding: auto;
+}
 
-    margin: auto;
-    padding: auto;
+.sidebar-categories {
+    padding: 20px;
+    text-align: justify;
 }
 /* Navbar style */
 ul {
