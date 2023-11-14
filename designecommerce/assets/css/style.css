@@ -252,9 +252,10 @@ background-color: rgb(41, 118, 82);
 margin-top: 10px;
 }
 .sucessful p {
-    color: aliceblue;
+    color: white;
     text-align: center;
     padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .end_start {
     float: right;
