@@ -107,11 +107,21 @@ padding: auto;
     padding: 20px;
     text-align: justify;
 }
+/* Product image Debut*/
+.product-image {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    grid-gap: 10px
+}
 /* Navbar style */
 ul {
     list-style: none;
     
-    
+}
+
+li span {
+    margin-left: 100px;
 }
 .navpart {
     display: flex;
