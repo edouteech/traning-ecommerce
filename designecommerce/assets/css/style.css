@@ -53,6 +53,9 @@ sup {
 
 /* Navbar style Fin*/
 
+.detail-navbar ul {
+ 
+}
 /* Header style */
 .presentation {
     display: flex;
@@ -97,7 +100,6 @@ sup {
     padding: 10px;
     margin-bottom: 50px;
 }  
-/* Fin des produits*/
 
 .presentation_week img {
     float: left;
