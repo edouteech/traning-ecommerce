@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,7 +33,7 @@ class StudentController extends Controller
       $validator = Validator::make($request->all(), [
         'name' => 'required|max:191',
         'email' => 'required|max:191',
-        'phone' => 'required|digits:8',
+        'role' => 'required',
         'password' => "required"
         
       ]);
@@ -47,7 +47,7 @@ class StudentController extends Controller
         $students = Student::create([
             'name' => $request->name,
             'email' => $request->email,
-            'phone' => $request->phone,
+            'role' => $request->role,
             'password' => bcrypt($request->password),
 
 
@@ -102,7 +102,7 @@ class StudentController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:191',
             'email' => 'required|max:191',
-            'phone' => 'required|digits:8',
+            'role' => 'required',
             'password' => "required"
             
           ]);
@@ -120,7 +120,7 @@ class StudentController extends Controller
                 $students->update([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'phone' => $request->phone,
+                    'role' => $request->role,
                     'password' => $request->password,
                 ]);
 

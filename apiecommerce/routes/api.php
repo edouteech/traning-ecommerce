@@ -56,7 +56,10 @@ Route::put('product/{id}/update', [ProductController::class, 'update']);
 
 Route::delete('product/{id}/delete', [ProductController::class, 'destroy']);
 
-Route::delete('product/{categorie}', [ProductController::class, 'categorie']);
+Route::get('product/{categorie}/categorie', [ProductController::class, 'categorie']);
+
+Route::get('prix/', [ProductController::class, 'prix']);
+
 
 
 
