@@ -48,15 +48,15 @@ Route::get('product', [ProductController::class, 'index']);
 
 Route::post('product', [ProductController::class, 'store']);
 
-Route::get('product{id}', [ProductController::class, 'show']);
+Route::get('product/{id}', [ProductController::class, 'show']);
 
-Route::get('product{id}edit', [ProductController::class, 'edit']);
+Route::get('product/{id}/edit', [ProductController::class, 'edit']);
 
-Route::put('product{id}update', [ProductController::class, 'update']);
+Route::put('product/{id}/update', [ProductController::class, 'update']);
 
-Route::delete('product{id}delete', [ProductController::class, 'destroy']);
+Route::delete('product/{id}/delete', [ProductController::class, 'destroy']);
 
-Route::delete('product{categorie}', [ProductController::class, 'categorie']);
+Route::delete('product/{categorie}', [ProductController::class, 'categorie']);
 
 
 
