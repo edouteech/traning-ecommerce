@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
@@ -62,4 +63,26 @@ Route::delete('product/{categorie}', [ProductController::class, 'categorie']);
 
 //Fin des routes pour les produits
 
-//Début des
+//Début des routtes pour les categories
+
+
+
+//Avoir tous les categories
+
+Route::get('/categorie',[CategorieController::class,'index']);
+
+//Avoir une categorie precise
+
+Route::get('/categorie/{id}',[CategorieController::class,'show']);
+
+//Creer une nouvel categorie
+
+Route::post('/categorie',[CategorieController::class,'store']);
+
+// Mettre a jour une categorie
+
+Route::put('/categorie/{id}',[CategorieController::class,'update']);
+
+//Supprimer une categorie
+
+Route::delete('/categorie/{id}',[CategorieController::class,'destroy']);
