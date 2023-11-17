@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
@@ -35,9 +36,14 @@ Route::put('users/{id}/edit', [StudentController::class, 'update']);
 
 Route::delete('users/{id}/delete', [StudentController::class, 'destroy']);
 
+Route::get('/confirmation/{token}', [StudentController::class, 'confirmationMail']);
+
 Route::post('login', [StudentController::class, 'login']);
 
 Route::post('logout', [StudentController::class, 'logout']);
+
+Route::post('update/password', [StudentController::class, 'updatepassword']);
+
 
 //Fin des route des utilisateurs
 
@@ -65,4 +71,11 @@ Route::get('prix/', [ProductController::class, 'prix']);
 
 //Fin des routes pour les produits
 
-//Début des
+//Début des route pour les orders
+
+Route::get('orders/', [OrdersController::class, 'index']);
+
+Route::post('orders/', [OrdersController::class, 'postOrder']);
+
+
+

@@ -14,6 +14,8 @@ class Student extends Model
         "name",
         "email",
         "role",
+        "token",
+        "status",
         "password",
     ];
 }
