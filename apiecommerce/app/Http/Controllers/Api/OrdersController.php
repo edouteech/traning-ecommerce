@@ -43,9 +43,9 @@ class OrdersController extends Controller
 
             if($orders){
                 return response()->json([
-                    'status' => 200,
+                    'status' => 201,
                     'message' => 'Order created successfully'
-                ],200);
+                ],201);
             }else{
                 return response()->json([
                     'status' => 500,
@@ -62,7 +62,8 @@ class OrdersController extends Controller
             $orders->delete();
 
             return response()->json([
-                'status' => 'Orders deleted successfully',
+                'status'=> 200,
+                'message' => 'Orders deleted successfully',
             ], 200);
         }else{
             return response()->json([
@@ -71,4 +72,22 @@ class OrdersController extends Controller
             ],500);
         }
     }
+
+    public function show(int $id) {
+        $orders = Orders::find($id);
+
+        
+        if($orders) {
+            return response()->json([
+                'status' => 200,
+                'message'=> $orders,
+            ],200);
+        }else{
+            return response()->json([
+                'status' => 400,
+                'message' => "Commande non trouvé"
+            ],400);
+        }
+    }
+
 }

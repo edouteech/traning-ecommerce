@@ -52,10 +52,10 @@ class ProductController extends Controller
 
             if($product) {
                 return response()->json([
-                    'status' => 200,
+                    'status' => 201,
                     'message' => "Product created",
                     'product' => $product,
-                ], 200);
+                ], 201);
             }else{
                 return response()->json([
                     'status' => 500,
@@ -124,9 +124,9 @@ class ProductController extends Controller
             ]);
 
             return response()->json([
-                'status' => 200,
+                'status' => 201,
                 'message' => "Product update Successfully",
-            ], 200);
+            ], 201);
         }else{
             return response()->json([
                 'status' =>  404,
@@ -161,7 +161,7 @@ class ProductController extends Controller
         if($products->isNotEmpty()){
             return response()->json([
                 'status' => 200,
-                'message' => $products,
+                'message' => $products
             ], 200);
         }else{
             return response()->json([
@@ -176,7 +176,7 @@ class ProductController extends Controller
         $minPrice = $request->min_price;
         $maxPrice = $request->max_price;
 
-        $products = Product::whereBetween('prix', [100, $maxPrice])->get();
+        $products = Product::whereBetween('prix', [$minPrice, $maxPrice])->get();
 
         if($products->isNotEmpty()){
             return response()->json([

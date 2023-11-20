@@ -42,7 +42,10 @@ Route::post('login', [StudentController::class, 'login']);
 
 Route::post('logout', [StudentController::class, 'logout']);
 
-Route::post('update/password', [StudentController::class, 'updatepassword']);
+Route::post('update/password', [StudentController::class, 'checkMail']);
+
+Route::post('update/{id/}password', [StudentController::class, 'updatepassword']);
+
 
 
 //Fin des route des utilisateurs
@@ -73,9 +76,15 @@ Route::get('prix/', [ProductController::class, 'prix']);
 
 //Début des route pour les orders
 
-Route::get('orders/', [OrdersController::class, 'index']);
+Route::get('orders', [OrdersController::class, 'index']);
 
-Route::post('orders/', [OrdersController::class, 'postOrder']);
+Route::post('orders', [OrdersController::class, 'postOrder']);
+
+Route::get('orders/{id}', [OrdersController::class, 'show']);
+
+Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+
+
 
 
 

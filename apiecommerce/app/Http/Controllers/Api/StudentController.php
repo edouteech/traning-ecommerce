@@ -166,36 +166,42 @@ class StudentController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-       
-        $student = Student::where('email', $request->email)->first();
-        if($student){
-            if($student->status === 1){
-                if(Hash::check($request->password, $student->password)){
-                    // Création de la session
-                    Session::put('user', $student);
-    
-                    return response()->json([
-                        'status' => 200,
-                        'message' => "Connexion Reussie",
-                        'token'=> Str::random(50).''.Str::random(100),
-                    ]);
+        if($validator){
+            $student = Student::where('email', $request->email)->first();
+            if($student){
+                if($student->status === 1){
+                    if(Hash::check($request->password, $student->password)){
+                        // Création de la session
+                        Session::put('user', $student);
+        
+                        return response()->json([
+                            'status' => 200,
+                            'message' => "Connexion Reussie",
+                            'token'=> Str::random(50).''.Str::random(100),
+                        ]);
+                    }else{
+                        return response()->json([
+                            'status' => 400,
+                            'message' => "Vérifier les informations que tu m'envoies",
+                        ], 400);
+                    }
                 }else{
                     return response()->json([
                         'status' => 400,
-                        'message' => "Vérifier les informations que tu m'envoies",
+                        'message' => "Veuillez confirmer votre mail",
                     ], 400);
                 }
             }else{
                 return response()->json([
                     'status' => 400,
-                    'message' => "Veuillez confirmer votre mail",
+                    'message' => "Vérifier les informations"
                 ], 400);
             }
         }else{
             return response()->json([
-                'status' => 400,
-                'message' => "Vérifier les informations"
-            ], 400);
+                "status" => 422,
+                "message"=> $validator->messages()
+            ],422);
         }
     }
 
@@ -247,7 +253,52 @@ public function confirmationMail($token) {
         }
     }
 
-    public function updatepassword($email){
+    public function checkMail(Request $request, string $email){
         $users = Student::where('email', $email)->first();
+        if($users) {
+            return response()->json([
+            'status' => 200,
+            "message"=> $users
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=> 400,
+                'message' => "Cet utilisateur n'est pas trouvé"
+            ],400);
+        }
+    }
+
+    public function updatepassword(Request $request, int$id) {
+        $users = Student::where('id', $id)->first();
+
+            if($users){
+
+                $validator = Validator::make($request->all(), [
+                "password" => 'required|min:6',
+                'newPassword' => 'required|min:6'
+                ]);
+                if($validator->fails()){
+                    return response()->json([
+                        'status'=> 422,
+                        'message'=> $validator->messages(),
+                    ],422);
+                }else{
+                    $users->update([
+                        "newPassword" => bcrypt($request->newPassword),
+                    ]);
+
+                    return response()->json([
+                        "status" => 201,
+                        "message" => "Vous venez de changer de mot de passe",
+                    ], 201);
+                }
+
+            }else{
+                return response()->json([
+                    'status' => 400,
+                    'message' => "Utilisateur n'est pas trouvé"
+                ],400);
+        }
+
     }
 }

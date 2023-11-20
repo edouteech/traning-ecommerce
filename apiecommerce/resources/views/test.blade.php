@@ -4,4 +4,4 @@
 
     <p>Confirmer votre mail pour activer votre compte :</p>
 
-    <a href="{{ url('confirmation', $mailData['token']) }}">{{ url('confirmation', $mailData['token']) }}</a>
+    <button href="{{ url('confirmation', $mailData['token']) }}">{{ url('confirmation', $mailData['token']) }}</button>
