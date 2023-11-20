@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Categorie;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,7 @@ Route::post('/categorie',[CategorieController::class,'store']);
 
 // Mettre a jour une categorie
 
-Route::put('/categorie/{id}',[CategorieController::class,'update']);
+Route::put('/categorie/{categorie}',[CategorieController::class,'update']);
 
 //Supprimer une categorie
 
