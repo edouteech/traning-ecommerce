@@ -87,12 +87,12 @@ class CategorieController extends Controller
         // return response()->json($categorie, 201);
 
 
-    public function show(Categorie $categorie)
+    public function show(int $categories)
     {
         // On retourne les informations des categories en JSON
         // return response()->json($categorie);
 
-        $categorie = Categorie::find($categorie);
+        $categorie = Categorie::find($categories);
 
         if($categorie){
             return response()->json([
@@ -108,9 +108,9 @@ class CategorieController extends Controller
     }
     // ... more methods ...
 
-    public function update(Request $request, Categorie $categorie) {
+    public function update(Request $request, int $categories) {
         //  La validation de données
-        // dd($categorie);
+        //  dd($categorie);
         // $this->validate($request, ['nom_categorie' => 'required|max:100']);
 
         // On modifie les informations des categories
@@ -129,20 +129,21 @@ class CategorieController extends Controller
         $validator = Validator::make($request->all(), [
             'nom_categorie' => 'required|max:191'
         ]);
-
+        
         if($validator-> fails()) {
+            // dd($validator);
             return response()->json([
                 'status' => 422,
                 'error' => $validator->messages()
                 ], 422);
         } else {
 
-            $categorie = Categorie::find($categorie);
+            $categorie = Categorie::find($categories);
         
                 if($categorie) {
             
                         $categorie->update([
-                            'nom-categorie' => $request->nom_categorie,
+                            'nom_categorie' => $request->nom_categorie,
                             
                         ]);
                         return response()->json([
@@ -160,22 +161,23 @@ class CategorieController extends Controller
 
     }
 
-    public function destroy(Categorie $categorie) {
+    public function destroy(int $categorie) {
         // On supprime les categories
 
-        $categorie ->delete();
+        // $categorie ->delete();
 
         // On retourne la réponse en JSON
-        return response()->json();
+        // return response()->json();
 
         $categorie = Categorie::find($categorie);
-
+        
         if($categorie){
+            // dd($categorie);
 
         $categorie->delete();
         return response()->json([
             'status' =>  200,
-            "message" => "Product  delete"
+            "message" => "Categorie  delete"
         ], 200);
 
         }else{

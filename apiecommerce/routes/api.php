@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\CategorieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categorie;
@@ -74,4 +75,19 @@ Route::get('prix/', [ProductController::class, 'prix']);
 
 //Fin des routes pour les produits
 
-//Début des
+//Début des routes pour les categories
+
+Route::get('categorie', [CategorieController::class, 'index']);
+
+Route::post('categorie', [CategorieController::class, 'store']);
+
+Route::get('categorie/{id}', [CategorieController::class, 'show']);
+
+Route::get('categorie/{id}/edit', [CategorieController::class, 'edit']);
+
+Route::put('categorie/{categories}/update', [CategorieController::class, 'update']);
+
+Route::delete('categorie/{categorie}/delete', [CategorieController::class, 'destroy']);
+
+Route::get('categorie/{categorie}/categorie', [CategorieController::class, 'categorie']);
+
