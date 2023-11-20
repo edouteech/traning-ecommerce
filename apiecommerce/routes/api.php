@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\CategorieController;
+use App\Http\Controllers\Api\OrderProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categorie;
@@ -91,3 +92,12 @@ Route::delete('categorie/{categorie}/delete', [CategorieController::class, 'dest
 
 Route::get('categorie/{categorie}/categorie', [CategorieController::class, 'categorie']);
 
+// Fin des routes pour la categorie
+
+// Debut des routs pour les OrdersProducts
+
+Route::post('/orders/{orderId}/add-product', 'OrderProductController@addProductToOrder');
+
+Route::delete('/orders/{orderId}/remove-product', 'OrderProductController@removeProductFromOrder');
+
+Route::get('/orders/{orderId}/products', 'OrderProductController@getOrderProducts');
