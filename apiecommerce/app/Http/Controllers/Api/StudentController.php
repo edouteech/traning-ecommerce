@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\TestMail;
 use App\Models\Student;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
@@ -31,10 +33,10 @@ class StudentController extends Controller
     }
     public function store(Request $request) {
       $validator = Validator::make($request->all(), [
-        'name' => 'required|max:191',
-        'email' => 'required|max:191',
-        'phone' => 'required|digits:8',
-        'password' => "required"
+        'name' => 'required|unique:students|regex:/^[\w\s-]+$/|max:50',
+        'email' => 'required|email|unique:students|regex:/^.+@.+\..+$/i',
+        'role' => 'required',
+        'password' => 'required|min:6'
         
       ]);
 
@@ -47,15 +49,21 @@ class StudentController extends Controller
         $students = Student::create([
             'name' => $request->name,
             'email' => $request->email,
-            'phone' => $request->phone,
+            'role' => $request->role,
+            'token'=> Str::random(120),
             'password' => bcrypt($request->password),
 
-
         ]);
+        $mailData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'token' =>   Str::random(120)
+        ];
+        Mail::to($mailData['email'])->send(new TestMail($mailData));
         if($students) {
             return response()->json([
                 'status' => 200,
-                'message' => "Students Created Successfully",
+                'message' => "Users Created Successfully",
             ], 200);
         }else{
             return response()->json([
@@ -100,10 +108,9 @@ class StudentController extends Controller
     public function update(Request $request, int $id){
         
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:191',
-            'email' => 'required|max:191',
-            'phone' => 'required|digits:8',
-            'password' => "required"
+            'name' => 'required|unique:students|regex:/^[\w\s-]+$/|max:100',
+            'email' => 'required|email|unique:students|regex:/^.+@.+\..+$/i',
+            'role' => 'required',
             
           ]);
     
@@ -120,8 +127,7 @@ class StudentController extends Controller
                 $students->update([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'phone' => $request->phone,
-                    'password' => $request->password,
+                    'role' => $request->role,
                 ]);
 
                 return response()->json([
@@ -160,29 +166,42 @@ class StudentController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-       
-        $student = Student::where('email', $request->email)->first();
-        if($student){
-
-            if(Hash::check($request->password, $student->password)){
-                // Création de la session
-                Session::put('user', $student);
-
-                return response()->json([
-                    'status' => 200,
-                    'message' => "Connexion Reussie"
-                ]);
+        if($validator){
+            $student = Student::where('email', $request->email)->first();
+            if($student){
+                if($student->status === 1){
+                    if(Hash::check($request->password, $student->password)){
+                        // Création de la session
+                        Session::put('user', $student);
+        
+                        return response()->json([
+                            'status' => 200,
+                            'message' => "Connexion Reussie",
+                            'token'=> Str::random(50).''.Str::random(100),
+                        ]);
+                    }else{
+                        return response()->json([
+                            'status' => 400,
+                            'message' => "Vérifier les informations que tu m'envoies",
+                        ], 400);
+                    }
+                }else{
+                    return response()->json([
+                        'status' => 400,
+                        'message' => "Veuillez confirmer votre mail",
+                    ], 400);
+                }
             }else{
                 return response()->json([
                     'status' => 400,
-                    'message' => "Vérifier les informations que tu m'envoies",
+                    'message' => "Vérifier les informations"
                 ], 400);
             }
         }else{
             return response()->json([
-                'status' => 400,
-                'message' => "Vérifier les informations"
-            ]);
+                "status" => 422,
+                "message"=> $validator->messages()
+            ],422);
         }
     }
 
@@ -203,4 +222,83 @@ class StudentController extends Controller
     }
 }
 
+
+public function confirmationMail($token) {
+
+    $users = Student::where('token', $token)->first();
+
+    if($users) {
+        if($users->status  === 1) {
+            return response()->json([
+                'status' => 201,
+                'message' => "Le compte est déja confirmé"
+            ], 201);
+        }else{
+
+            
+            $users->update([
+                $users->status = 1,
+            ]);
+            return response()->json([
+                "status" => 200,
+                "message" => "Votre compte à été bien confirmé"
+            ], 200);
+        }
+       
+        }else {
+            return response()->json([
+                'status' => 402,
+                'message' => "Vérifier le token que vous envoyez"
+            ], 402);
+        }
+    }
+
+    public function checkMail(Request $request, string $email){
+        $users = Student::where('email', $email)->first();
+        if($users) {
+            return response()->json([
+            'status' => 200,
+            "message"=> $users
+            ], 200);
+        }else{
+            return response()->json([
+                'status'=> 400,
+                'message' => "Cet utilisateur n'est pas trouvé"
+            ],400);
+        }
+    }
+
+    public function updatepassword(Request $request, int$id) {
+        $users = Student::where('id', $id)->first();
+
+            if($users){
+
+                $validator = Validator::make($request->all(), [
+                "password" => 'required|min:6',
+                'newPassword' => 'required|min:6'
+                ]);
+                if($validator->fails()){
+                    return response()->json([
+                        'status'=> 422,
+                        'message'=> $validator->messages(),
+                    ],422);
+                }else{
+                    $users->update([
+                        "newPassword" => bcrypt($request->newPassword),
+                    ]);
+
+                    return response()->json([
+                        "status" => 201,
+                        "message" => "Vous venez de changer de mot de passe",
+                    ], 201);
+                }
+
+            }else{
+                return response()->json([
+                    'status' => 400,
+                    'message' => "Utilisateur n'est pas trouvé"
+                ],400);
+        }
+
+    }
 }

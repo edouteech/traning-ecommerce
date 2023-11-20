@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
 use Illuminate\Http\Request;
@@ -37,9 +36,17 @@ Route::put('users/{id}/edit', [StudentController::class, 'update']);
 
 Route::delete('users/{id}/delete', [StudentController::class, 'destroy']);
 
+Route::get('/confirmation/{token}', [StudentController::class, 'confirmationMail']);
+
 Route::post('login', [StudentController::class, 'login']);
 
 Route::post('logout', [StudentController::class, 'logout']);
+
+Route::post('update/password', [StudentController::class, 'checkMail']);
+
+Route::post('update/{id/}password', [StudentController::class, 'updatepassword']);
+
+
 
 //Fin des route des utilisateurs
 
@@ -58,32 +65,13 @@ Route::put('product/{id}/update', [ProductController::class, 'update']);
 
 Route::delete('product/{id}/delete', [ProductController::class, 'destroy']);
 
-Route::delete('product/{categorie}', [ProductController::class, 'categorie']);
+Route::get('product/{categorie}/categorie', [ProductController::class, 'categorie']);
+
+Route::get('prix/', [ProductController::class, 'prix']);
+
 
 
 
 //Fin des routes pour les produits
 
-//Début des routtes pour les categories
-
-
-
-//Avoir tous les categories
-
-Route::get('/categorie',[CategorieController::class,'index']);
-
-//Avoir une categorie precise
-
-Route::get('/categorie/{id}',[CategorieController::class,'show']);
-
-//Creer une nouvel categorie
-
-Route::post('/categorie',[CategorieController::class,'store']);
-
-// Mettre a jour une categorie
-
-Route::put('/categorie/{categorie}',[CategorieController::class,'update']);
-
-//Supprimer une categorie
-
-Route::delete('/categorie/{id}',[CategorieController::class,'destroy']);
+//Début des
