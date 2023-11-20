@@ -111,7 +111,7 @@ class ProductController extends Controller
                 'status' => 422,
                 'error' => $validator->messages()
             ], 422);
-      }else {
+        }else {
         $products = Product::find($id);
 
         if($products) {
