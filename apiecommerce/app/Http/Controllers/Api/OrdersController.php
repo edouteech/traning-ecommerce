@@ -26,8 +26,6 @@ class OrdersController extends Controller
 
     public function postOrder(Request $request){
         $states = ["in_stock", "out_stock", "closed", "neutre" ];
-
-
         $validator =  Validator::make($request->all(),[
             'user_id' => ['required','exists:students,id'],
             'state' => ['required'],
@@ -58,7 +56,7 @@ class OrdersController extends Controller
             }else{
                 return response()->json([
                     "status" => 422,
-                    "message" =>"Les valeurs du states doivent etre out_stock, in_stock, closed, neutre"
+                    "message" =>"Les valeurs du states doivent etre ". implode(", ",$states)
                 ], 422);
             }
            
