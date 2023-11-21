@@ -44,7 +44,7 @@ Route::post('logout', [StudentController::class, 'logout']);
 
 Route::post('update/password', [StudentController::class, 'checkMail']);
 
-Route::post('update/{id/}password', [StudentController::class, 'updatepassword']);
+Route::post('update/{id}/password', [StudentController::class, 'updatepassword']);
 
 
 

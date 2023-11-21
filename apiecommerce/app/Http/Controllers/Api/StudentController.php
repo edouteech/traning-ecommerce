@@ -253,7 +253,7 @@ public function confirmationMail($token) {
         }
     }
 
-    public function checkMail(Request $request, string $email){
+    public function checkMail(string $email){
         $users = Student::where('email', $email)->first();
         if($users) {
             return response()->json([
@@ -283,14 +283,22 @@ public function confirmationMail($token) {
                         'message'=> $validator->messages(),
                     ],422);
                 }else{
-                    $users->update([
-                        "newPassword" => bcrypt($request->newPassword),
-                    ]);
-
-                    return response()->json([
-                        "status" => 201,
-                        "message" => "Vous venez de changer de mot de passe",
-                    ], 201);
+                    if($request->password === $request->newPassword){
+                        $users->update([
+                            "password" => bcrypt($request->newPassword),
+                        ]);
+    
+                        return response()->json([
+                            "status" => 201,
+                            "message" => "Vous venez de changer de mot de passe",
+                        ], 201);
+                    }else{
+                        return response()->json([
+                            "status" => 400,
+                            "message" => "Les mot de passes ne correspondent pas",
+                        ], 200);
+                    }
+                    
                 }
 
             }else{

@@ -15,7 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('students');
-            $table->integer("state");
+            $table->enum('state', [
+                'in_stock',
+                'out_stock',
+                'closed',
+                'neutre',
+                ])
+                ->default('in_stock');
             $table->timestamps();
         });
     }

@@ -25,9 +25,12 @@ class OrdersController extends Controller
     }
 
     public function postOrder(Request $request){
+        $states = ["in_stock", "out_stock", "closed", "neutre" ];
+
+
         $validator =  Validator::make($request->all(),[
             'user_id' => ['required','exists:students,id'],
-            'state' => 'required'
+            'state' => ['required'],
         ]);
 
         if($validator->fails()) {
@@ -36,22 +39,29 @@ class OrdersController extends Controller
                 "message" => $validator->messages(),
             ], 422);
         }else {
-            $orders = Orders::create([
-                'user_id' => $request->user_id,
-                'state' => $request->state,
-                ]);
-
-            if($orders){
-                return response()->json([
-                    'status' => 201,
-                    'message' => 'Order created successfully'
-                ],201);
+            if(in_array($request->state, $states)){
+                $orders = Orders::create([
+                    'user_id' => $request->user_id,
+                    'state' => $request->state,
+                    ]);
+                    if($orders){
+                        return response()->json([
+                            'status' => 201,
+                            'message' => 'Order created successfully'
+                        ],201);
+                    }else{
+                        return response()->json([
+                            'status' => 500,
+                            'message' => "Erreur survenu lors de la création de la commande"
+                        ], 500);
+                    }
             }else{
                 return response()->json([
-                    'status' => 500,
-                    'message' => "Erreur survenu lors de la création de la commande"
-                ], 500);
+                    "status" => 422,
+                    "message" =>"Les valeurs du states doivent etre out_stock, in_stock, closed, neutre"
+                ], 422);
             }
+           
         }
     }
 
