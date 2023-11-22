@@ -1,12 +1,129 @@
 * {
-    margin: auto;
-    padding: auto;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*Debut de Collection*/
+.pagination {
+    display: inline-block;
+   
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+ .container {
+    margin: 20px;
+    padding: 20px;
+    display: flex; 
+}
+
+.first-container {
+    display: flex;
+    text-align: center;
+
+}
+
+.min-container ul {
+    list-style-type: none;
+    
+
+}
+
+.min-container ul li {
+    padding: 20px;
+    margin:20px;
+    
+}
+
+.categories-liste li {
+    border-bottom: 1px solid rgb(206, 205, 205);
+    padding: 10px;
+    display:flex;
+    justify-content: space-between;
+}
+.second-container ul {
+    list-style-type: none;
+  
+}
+.second-container {
+    padding: 30px;
+}
+
+ul.tags-part {
+    gap: 20px;
+}
+.tags-part {
+    display: flex;
+}
+
+.tags-list {
+    padding: 25px;
+    background-color: blueviolet;
+    color:white;
+    border: 1px solid white;
+}
+.tags-clean {
+    padding: 25px;
+    background-color: rgb(245, 234, 255);
+    color:black;
+    border: 1px solid white;    </span>
+}
+
+.tags-immun {
+    padding: 25px;
+    background-color: rgb(245, 234, 255);
+    color:black;
+    border: 1px solid white;
+}
+
+.tags-vita {
+    padding: 25px;
+    background-color:rgb(245, 234, 255);
+    color:black;
+    border: 1px solid white;
+
+}
+
+.tags-end {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+p.para-second {
+    border: 1px solid;
+    padding: 20px 90px;
+}
+.second-container ul li {
+margin-left:auto;
+padding:auto;
+margin: auto;
+padding: auto;
+}
+
+.sidebar-categories {
+    padding: 20px;
+    text-align: justify;
+}
+/* Product image Debut*/
+.product-image {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    grid-gap: 10px
 }
 /* Navbar style */
 ul {
     list-style: none;
     
-    
+}
+
+li span {
+    margin-left: 100px;
 }
 .navpart {
     display: flex;
