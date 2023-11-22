@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\TestMail;
+use App\Models\Orders;
 use App\Models\Student;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -145,9 +146,11 @@ class StudentController extends Controller
 
     public function destroy($id){
         $students = Student::find($id);
+        // $orders = Orders::find($id);
 
         if($students){
-            $students->delete();
+            $students->delete();    
+            // $orders->delete();
             return response()->json([
                 'status' =>  200,
                 "message" => "users  delete"

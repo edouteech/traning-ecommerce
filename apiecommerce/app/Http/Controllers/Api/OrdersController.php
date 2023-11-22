@@ -24,7 +24,7 @@ class OrdersController extends Controller
         } 
     }
 
-    public function postOrder(Request $request){
+    public function store(Request $request){
         $states = ["in_stock", "out_stock", "closed", "neutre" ];
         $validator =  Validator::make($request->all(),[
             'user_id' => ['required','exists:students,id'],
@@ -75,9 +75,9 @@ class OrdersController extends Controller
             ], 200);
         }else{
             return response()->json([
-                'status' => 500,
-                'message' => "Erreur survenue lors de la suppression de la commande"
-            ],500);
+                'status' => 400,
+                'message' => "Cette commande n'est pas trouvé"
+            ],400);
         }
     }
 

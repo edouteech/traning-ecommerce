@@ -22,19 +22,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Début des routes pour l'action des utilisateur
+Route::resource('users', StudentController::class);
 
+// Route::get('users', [StudentController::class, 'index']);
 
-Route::get('users', [StudentController::class, 'index']);
+// Route::post('users', [StudentController::class, 'store']);
 
-Route::post('users', [StudentController::class, 'store']);
+// Route::get('users/{id}', [StudentController::class, 'show']);
 
-Route::get('users/{id}', [StudentController::class, 'show']);
+// Route::get('users/{id}/edit', [StudentController::class, 'edit']);
 
-Route::get('users/{id}/edit', [StudentController::class, 'edit']);
+// Route::put('users/{id}/edit', [StudentController::class, 'update']);
 
-Route::put('users/{id}/edit', [StudentController::class, 'update']);
-
-Route::delete('users/{id}/delete', [StudentController::class, 'destroy']);
+// Route::delete('users/{id}/delete', [StudentController::class, 'destroy']);
 
 Route::get('/confirmation/{token}', [StudentController::class, 'confirmationMail']);
 
@@ -52,18 +52,19 @@ Route::post('update/{id}/password', [StudentController::class, 'updatepassword']
 
 //Début des routes pour les produits
 
+Route::resource('product', ProductController::class);
 
-Route::get('product', [ProductController::class, 'index']);
+// Route::get('product', [ProductController::class, 'index']);
 
-Route::post('product', [ProductController::class, 'store']);
+// Route::post('product', [ProductController::class, 'store']);
 
-Route::get('product/{id}', [ProductController::class, 'show']);
+// Route::get('product/{id}', [ProductController::class, 'show']);
 
-Route::get('product/{id}/edit', [ProductController::class, 'edit']);
+// Route::get('product/{id}/edit', [ProductController::class, 'edit']);
 
-Route::put('product/{id}/update', [ProductController::class, 'update']);
+// Route::put('product/{id}/update', [ProductController::class, 'update']);
 
-Route::delete('product/{id}/delete', [ProductController::class, 'destroy']);
+// Route::delete('product/{id}/delete', [ProductController::class, 'destroy']);
 
 Route::get('product/{categorie}/categorie', [ProductController::class, 'categorie']);
 
@@ -75,14 +76,15 @@ Route::get('prix/', [ProductController::class, 'prix']);
 //Fin des routes pour les produits
 
 //Début des route pour les orders
+Route::resource('orders', OrdersController::class);
 
-Route::get('orders', [OrdersController::class, 'index']);
+// Route::get('orders', [OrdersController::class, 'index']);
 
-Route::post('orders', [OrdersController::class, 'postOrder']);
+// Route::post('orders', [OrdersController::class, 'postOrder']);
 
-Route::get('orders/{id}', [OrdersController::class, 'show']);
+// Route::get('orders/{id}', [OrdersController::class, 'show']);
 
-Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+// Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
 
 
 
