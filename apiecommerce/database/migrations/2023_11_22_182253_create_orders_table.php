@@ -14,8 +14,14 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('students');
-            $table->integer("state");
+            $table->foreign('user_id')->references('id')->on('students')->onDelete('cascade');;
+            $table->enum('state', [
+                'created',
+                'pending',
+                'complete',
+                'fail',
+                ])
+                ->default('created')->collation('utf8mb4_general_ci');;
             $table->timestamps();
         });
     }

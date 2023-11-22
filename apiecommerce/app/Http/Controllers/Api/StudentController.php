@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\TestMail;
+use App\Models\Orders;
 use App\Models\Student;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -145,9 +146,11 @@ class StudentController extends Controller
 
     public function destroy($id){
         $students = Student::find($id);
+        // $orders = Orders::find($id);
 
         if($students){
-            $students->delete();
+            $students->delete();    
+            // $orders->delete();
             return response()->json([
                 'status' =>  200,
                 "message" => "users  delete"
@@ -253,7 +256,7 @@ public function confirmationMail($token) {
         }
     }
 
-    public function checkMail(Request $request, string $email){
+    public function checkMail(string $email){
         $users = Student::where('email', $email)->first();
         if($users) {
             return response()->json([
@@ -283,14 +286,22 @@ public function confirmationMail($token) {
                         'message'=> $validator->messages(),
                     ],422);
                 }else{
-                    $users->update([
-                        "newPassword" => bcrypt($request->newPassword),
-                    ]);
-
-                    return response()->json([
-                        "status" => 201,
-                        "message" => "Vous venez de changer de mot de passe",
-                    ], 201);
+                    if($request->password === $request->newPassword){
+                        $users->update([
+                            "password" => bcrypt($request->newPassword),
+                        ]);
+    
+                        return response()->json([
+                            "status" => 201,
+                            "message" => "Vous venez de changer de mot de passe",
+                        ], 201);
+                    }else{
+                        return response()->json([
+                            "status" => 400,
+                            "message" => "Les mot de passes ne correspondent pas",
+                        ], 200);
+                    }
+                    
                 }
 
             }else{

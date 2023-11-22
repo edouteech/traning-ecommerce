@@ -19,12 +19,10 @@ class Orders extends Model
         return $this->belongsTo(Student::class, 'user_id', 'id');
     }
 
-
+    
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id')
-            ->withPivot('quantity');
+        return $this->belongsToMany(Product::class, 'order_products', 'order_id', 'product_id')->withPivot('quantity');
     }
-    
 }
 

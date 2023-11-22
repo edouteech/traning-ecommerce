@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class OrdersController extends Controller
 {
@@ -24,10 +25,15 @@ class OrdersController extends Controller
         } 
     }
 
-    public function postOrder(Request $request){
+    public function store(Request $request){
+        $states = ["fail", "created", "pending", "complete" ];
         $validator =  Validator::make($request->all(),[
             'user_id' => ['required','exists:students,id'],
-            'state' => 'required'
+            'state' => ['required', Rule::in($states)],
+            'product' => 'required|array',
+            'product.*.product_id' => 'required|exists:product,id',
+            'product.*.quantity' => 'required|integer|min:1',
+        
         ]);
 
         if($validator->fails()) {
@@ -36,22 +42,39 @@ class OrdersController extends Controller
                 "message" => $validator->messages(),
             ], 422);
         }else {
-            $orders = Orders::create([
-                'user_id' => $request->user_id,
-                'state' => $request->state,
-                ]);
+            if(in_array($request->state, $states)){
+                $orders = Orders::create([
+                    'user_id' => $request->user_id,
+                    'state' => $request->state,
+                    ]);
+                        $product = $request->input('product', []);
 
-            if($orders){
-                return response()->json([
-                    'status' => 201,
-                    'message' => 'Order created successfully'
-                ],201);
+                        foreach ($product as $products) {
+                            $product_id = $products['product_id'];
+                            $quantity = $products['quantity'];
+            
+                            // Ajoutez la relation many-to-many entre la commande et le produit
+                            $orders->products()->attach($product_id, ['quantity' => $quantity]);
+                        }
+            
+                    if($orders){
+                        return response()->json([
+                            'status' => 201,
+                            'message' => 'Order created successfully'
+                        ],201);
+                    }else{
+                        return response()->json([
+                            'status' => 500,
+                            'message' => "Erreur survenu lors de la création de la commande"
+                        ], 500);
+                    }
             }else{
                 return response()->json([
-                    'status' => 500,
-                    'message' => "Erreur survenu lors de la création de la commande"
-                ], 500);
+                    "status" => 422,
+                    "message" =>"Les valeurs du states doivent etre ". implode(", ",$states)
+                ], 422);
             }
+           
         }
     }
 
@@ -67,9 +90,9 @@ class OrdersController extends Controller
             ], 200);
         }else{
             return response()->json([
-                'status' => 500,
-                'message' => "Erreur survenue lors de la suppression de la commande"
-            ],500);
+                'status' => 400,
+                'message' => "Cette commande n'est pas trouvé"
+            ],400);
         }
     }
 
