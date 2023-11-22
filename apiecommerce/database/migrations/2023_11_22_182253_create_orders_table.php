@@ -16,12 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('students')->onDelete('cascade');;
             $table->enum('state', [
-                'in_stock',
-                'out_stock',
-                'closed',
-                'neutre',
+                'created',
+                'pending',
+                'complete',
+                'fail',
                 ])
-                ->default('in_stock');
+                ->default('created')->collation('utf8mb4_general_ci');;
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class OrdersController extends Controller
 {
@@ -25,10 +26,14 @@ class OrdersController extends Controller
     }
 
     public function store(Request $request){
-        $states = ["in_stock", "out_stock", "closed", "neutre" ];
+        $states = ["fail", "created", "pending", "complete" ];
         $validator =  Validator::make($request->all(),[
             'user_id' => ['required','exists:students,id'],
-            'state' => ['required'],
+            'state' => ['required', Rule::in($states)],
+            'product' => 'required|array',
+            'product.*.product_id' => 'required|exists:product,id',
+            'product.*.quantity' => 'required|integer|min:1',
+        
         ]);
 
         if($validator->fails()) {
@@ -42,6 +47,16 @@ class OrdersController extends Controller
                     'user_id' => $request->user_id,
                     'state' => $request->state,
                     ]);
+                        $product = $request->input('product', []);
+
+                        foreach ($product as $products) {
+                            $product_id = $products['product_id'];
+                            $quantity = $products['quantity'];
+            
+                            // Ajoutez la relation many-to-many entre la commande et le produit
+                            $orders->products()->attach($product_id, ['quantity' => $quantity]);
+                        }
+            
                     if($orders){
                         return response()->json([
                             'status' => 201,
