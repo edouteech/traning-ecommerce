@@ -56,7 +56,7 @@ class CategorieController extends Controller
                 return response() ->json([
                     'status' => 201,
                     'message' => 'categorie created',
-                    'categorie' => $categorie
+                    'data' => $categorie
                 ], 201);
             }else {
                 return response() -> json([
@@ -97,7 +97,7 @@ class CategorieController extends Controller
         if($categorie){
             return response()->json([
                 'status' => 200,
-                'message' => $categorie,
+                'data' => $categorie,
             ], 200);
         }else{
             return response()->json([
@@ -149,6 +149,7 @@ class CategorieController extends Controller
                         return response()->json([
                             'status' => 201,
                             'message' => "Product update Successfully",
+                            'data' => $categorie
                         ], 201);
 
                 } else{

@@ -3,10 +3,12 @@
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\CategorieController;
-use App\Http\Controllers\Api\OrderProductController;
+use App\Http\Controllers\Api\SellController;
+use App\Http\Controllers\Api\OrdersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categorie;
+use App\Models\Order_Products;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,8 +98,11 @@ Route::get('categorie/{categorie}/categorie', [CategorieController::class, 'cate
 
 // Debut des routs pour les OrdersProducts
 
-Route::post('/orders/{orderId}/add-product', 'OrderProductController@addProductToOrder');
+Route::post('sell/{orderId}/add', [SellController::class, 'addProductToOrder']);
 
-Route::delete('/orders/{orderId}/remove-product', 'OrderProductController@removeProductFromOrder');
+Route::delete('sell/{orderId}/remove', [SellController::class, 'removeProductFromOrder']);
 
-Route::get('/orders/{orderId}/products', 'OrderProductController@getOrderProducts');
+Route::get('sell/{orderId}', [SellController::class, 'getOrderProducts']);
+
+
+// Route::get('order_products', [OrdersController::class, 'addProductToOrder']);

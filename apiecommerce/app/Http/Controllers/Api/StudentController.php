@@ -54,12 +54,12 @@ class StudentController extends Controller
             'password' => bcrypt($request->password),
 
         ]);
-        $mailData = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'token' =>   Str::random(120)
-        ];
-        Mail::to($mailData['email'])->send(new TestMail($mailData));
+        // $mailData = [
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'token' =>   Str::random(120)
+        // ];
+        // Mail::to($mailData['email'])->send(new TestMail($mailData));
         if($students) {
             return response()->json([
                 'status' => 200,
