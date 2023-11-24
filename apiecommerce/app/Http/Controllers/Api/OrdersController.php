@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderProducts;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -112,5 +113,40 @@ class OrdersController extends Controller
             ],400);
         }
     }
+
+    public function getOrderProducts() {
+
+        //Créeons une variable qui contient  les données
+        $orderProductsData = [];
+    
+        // Récupéreons toutes les order_products avec les relations products et orders
+        $orderProducts = OrderProducts::with(['product', 'order'])->get();
+    
+        foreach ($orderProducts as $orderProduct) {
+            $orderId = $orderProduct->order->id;
+            $order_state = $orderProduct->order->state;
+            $productId = $orderProduct->product->id;
+            $productName = $orderProduct->product->name;
+            $product_prix = $orderProduct->product->prix;
+            $quantity = $orderProduct->quantity;
+    
+            // Mettons maintenant  les données de order_product au tableau $orderProductsData
+            $orderProductsData[] = [
+                "order_id" => $orderId,
+                "product_id" => $productId,
+                "product_name" =>$productName,
+                "order_state" =>$order_state,
+                "price_of_product" => $product_prix,
+                "quantity" => $quantity,
+            ];
+        }
+    
+        // Return après avoir traité toutes les order_products
+        return response()->json([
+            "status" => 200,
+            "data" => $orderProductsData,
+        ], 200);
+    }
+    
 
 }
