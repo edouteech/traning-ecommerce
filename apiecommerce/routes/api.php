@@ -84,7 +84,7 @@ Route::resource('orders', OrdersController::class);
 
 // Route::get('orders/{id}', [OrdersController::class, 'show']);
 
-// Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+Route::get('order_products', [OrdersController::class, 'getOrderproducts']);
 
 
 
