@@ -93,19 +93,22 @@ Route::resource('orders', OrdersController::class);
 
 // Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
 
-Route::post('categorie', [CategorieController::class, 'store']);
 
-Route::get('categorie/{id}', [CategorieController::class, 'show']);
+// Route::post('categorie', [CategorieController::class, 'store']);
 
-Route::get('categorie/{id}/edit', [CategorieController::class, 'edit']);
+// Route::get('categorie/{id}', [CategorieController::class, 'show']);
 
-Route::put('categorie/{categories}/update', [CategorieController::class, 'update']);
+// Route::get('categorie/{id}/edit', [CategorieController::class, 'edit']);
 
-Route::delete('categorie/{categorie}/delete', [CategorieController::class, 'destroy']);
+// Route::put('categorie/{categories}/update', [CategorieController::class, 'update']);
 
-Route::get('categorie/{categorie}/categorie', [CategorieController::class, 'categorie']);
+// Route::delete('categorie/{categorie}/delete', [CategorieController::class, 'destroy']);
+
+// Route::get('categorie/{categorie}/categorie', [CategorieController::class, 'categorie']);
 
 // Fin des routes pour la categorie
+
+Route::resource('categorie', CategorieController::class);
 
 // Debut des routs pour les OrdersProducts
 

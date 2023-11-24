@@ -14,11 +14,7 @@ return new class extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_category');
-<<<<<<<< HEAD:apiecommerce/database/migrations/2023_11_22_155641_create_product_table.php
             $table->foreign('id_category')->references('id')->on('categorie')->onDelete("cascade");
-========
-            $table->foreign('id_category')->references('id')->on('categorie')->onDelete('cascade');
->>>>>>>> main:apiecommerce/database/migrations/2023_11_22_132418_create_product_table.php
             $table->string('name');
             $table->string('description');
             $table->string('prix');
